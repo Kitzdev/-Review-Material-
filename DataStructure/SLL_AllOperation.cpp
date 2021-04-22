@@ -19,6 +19,7 @@ node *CreateNode(char newData[])
     //Return the address of the newNode.
     return newNode;
 }
+
 //Create a new linked list.
 node *CreateLinkedList()
 {
