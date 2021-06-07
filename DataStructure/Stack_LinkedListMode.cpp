@@ -21,6 +21,18 @@ class Stack
         return newNode;
     }
 
+    bool IsEmpty()
+    {
+        if(head -> link == NULL)
+        {
+            return true;
+             
+        } else 
+        {
+            return false;
+        }
+    }
+
     //Delete after head
     void Push(int data)
     {
@@ -42,6 +54,18 @@ class Stack
         head -> link = head -> link -> link;
         free(tempNode);
         return tempData;
+    }
+
+    int Top()
+    {
+        if(IsEmpty())
+        {
+            return -1;
+
+        } else
+        {
+            return head -> link -> data;
+        }
     }
 };
 

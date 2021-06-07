@@ -9,6 +9,18 @@ class Stack
     int data[100];
     int head = -1;
 
+    bool IsEmpty()
+    {
+        if(head == -1)
+        {
+            return true;
+
+        } else
+        {
+            return false;
+        }
+    }
+
     void Push(int data)
     {
         if(head == 100)
@@ -30,6 +42,18 @@ class Stack
         int temp = head;
         head--;
         return data[temp];
+    }
+
+    int Top()
+    {
+        if(IsEmpty())
+        {
+            return -1;
+
+        } else
+        {
+            return data[head];
+        }
     }
 };
 
