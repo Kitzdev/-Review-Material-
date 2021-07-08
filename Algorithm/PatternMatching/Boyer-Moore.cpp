@@ -2,7 +2,24 @@
 #include <string.h> 
 using namespace std;
 
-void BoyerMoore(string text, string pattern)
+int BadCharacterRule(string text, string pattern, int textIndex, int patternIndex)
+{
+    while(pattern[patternIndex] != text[textIndex] && patternIndex != -1)
+    {
+        patternIndex--;
+    }
+
+    if(patternIndex == -1)
+    {
+        return pattern.length();
+        
+    } else
+    {
+        return (pattern.length() - 1) - patternIndex;    
+    }
+}
+
+int BoyerMoore(string text, string pattern)
 {
     int textIndex, patternIndex;
     int badCharacterSkipIndex = 0;  //Bad Character rule
@@ -11,7 +28,7 @@ void BoyerMoore(string text, string pattern)
     //Pattern will not match with the text
     if(pattern.length() >= text.length())
     {
-        cout << "Pattern does not exist!";
+        return -1;
     } 
 
     textIndex = pattern.length() - 1; 
@@ -28,15 +45,7 @@ void BoyerMoore(string text, string pattern)
 
                 if(patternIndex == -1)
                 {      
-                    cout << text << "\n";
-                        
-                    for(int i = 0; i < textIndex; i++)
-                    {
-                        cout << " ";
-                    }
-
-                    cout << pattern << "\n";
-                    return;
+                   return textIndex;
                 }
 
                 textIndex--;
@@ -44,21 +53,7 @@ void BoyerMoore(string text, string pattern)
 
         } else
         {
-            while(pattern[patternIndex] != text[textIndex] && patternIndex != -1)
-            {
-                patternIndex--;
-            }
-
-            if(patternIndex == -1)
-            {
-                badCharacterSkipIndex = pattern.length();
-                
-            } else
-            {
-                badCharacterSkipIndex = (pattern.length() - 1) - patternIndex;    
-            }
-            
-            textIndex += badCharacterSkipIndex;
+            badCharacterSkipIndex = BadCharacterRule(text, pattern, textIndex, patternIndex);
         }
     }
 }
@@ -74,5 +69,21 @@ int main()
     cout << "Input the pattern: ";
     getline(cin, pattern);
 
-    BoyerMoore(text, pattern);
+    matchIndex = BoyerMoore(text, pattern);
+
+    if(matchIndex != -1)
+    {
+        cout << "Pattern founded!\n" << text << "\n";
+            
+        for(int i = 0; i < matchIndex; i++)
+        {
+            cout << " ";
+        }
+
+        cout << pattern << "\n";
+
+    } else
+    {
+        cout << "Pattern not founded!\n";
+    }
 }
