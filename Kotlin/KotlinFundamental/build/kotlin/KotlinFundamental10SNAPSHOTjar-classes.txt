@@ -1,0 +1,1 @@
+/home/kitbert/Desktop/Programming/-Review-Material-/Kotlin/KotlinFundamental/build/classes/kotlin/main/DataTypesAndVariable.class:/home/kitbert/Desktop/Programming/-Review-Material-/Kotlin/KotlinFundamental/build/classes/kotlin/main/HelloKotlin.class

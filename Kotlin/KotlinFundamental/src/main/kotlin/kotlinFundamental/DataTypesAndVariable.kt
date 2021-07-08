@@ -1,0 +1,6 @@
+package kotlinFundamental
+
+fun main()
+{
+
+}
