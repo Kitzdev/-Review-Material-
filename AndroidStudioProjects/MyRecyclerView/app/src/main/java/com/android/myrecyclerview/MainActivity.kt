@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View.inflate
+import android.widget.Toast
 import androidx.core.content.res.ColorStateListInflaterCompat.inflate
 import androidx.core.content.res.ComplexColorCompat.inflate
 import androidx.core.graphics.drawable.DrawableCompat.inflate
@@ -30,16 +31,35 @@ class MainActivity : AppCompatActivity() {
         setActionbarTitle(title)
     }
 
+    private fun showSelectedHero(hero: Hero) {
+        Toast.makeText(this, "Kamu memilih " + hero.name, Toast.LENGTH_SHORT)
+            .show()
+    }
+
     private fun showRecycleList() {
         rvHeroes.layoutManager = LinearLayoutManager(this)
         val listHeroAdapter = ListHeroAdapter(list)
         rvHeroes.adapter = listHeroAdapter
+
+        listHeroAdapter.setOnItemClickCallback(object : ListHeroAdapter
+        .OnItemClickCallback {
+            override fun onItemClicked(data: Hero) {
+                showSelectedHero(data)
+            }
+        })
     }
 
     private fun showRecyclerGrid() {
         rvHeroes.layoutManager = GridLayoutManager(this, 2)
         val gridHeroAdapter = GridHeroAdapter(list)
         rvHeroes.adapter = gridHeroAdapter
+
+        gridHeroAdapter.setOnItemClickCallback(object: GridHeroAdapter
+        .OnItemClickCallback {
+            override fun onItemCLicked(data: Hero) {
+                showSelectedHero(data)
+            }
+        })
     }
 
     private fun showRecyclerCardView() {

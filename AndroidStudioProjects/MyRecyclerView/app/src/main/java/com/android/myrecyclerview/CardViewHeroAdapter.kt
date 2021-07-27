@@ -11,8 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-class CardViewHeroAdapter(private val listHero:
-                                         ArrayList<Hero>) :
+class CardViewHeroAdapter(private val listHero: ArrayList<Hero>) :
     RecyclerView.Adapter<CardViewHeroAdapter.CardViewViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
@@ -58,5 +57,4 @@ class CardViewHeroAdapter(private val listHero:
         var btnFavorite: Button = itemView.findViewById(R.id.btn_set_favorite)
         var btnShare: Button = itemView.findViewById(R.id.btn_set_share)
     }
-
 }
