@@ -1,0 +1,2 @@
+rootProject.name = "Let's Compare! - VGA Series"
+include ':app'
